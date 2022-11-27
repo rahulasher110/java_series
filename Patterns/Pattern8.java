@@ -1,19 +1,18 @@
 /*
  
- ****
- ****
- ****
- ****
+ ABCD
+ ABCD
+ ABCD
+ ABCD
  
  
  */
-
 
 package Patterns;
 
 import java.util.Scanner;
 
-public class Pattern1 {
+public class Pattern8 {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -28,8 +27,10 @@ public class Pattern1 {
 		while(i <= n) {
 			
 			int j = 1;
+			
 			while(j <= n) {
-				System.out.print("*");
+				
+				System.out.print((char)('A'+j - 1));
 				j++;
 			}
 			
@@ -37,6 +38,7 @@ public class Pattern1 {
 			
 			i++;
 		}
+		
 
 	}
 

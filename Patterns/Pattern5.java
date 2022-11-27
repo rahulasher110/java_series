@@ -1,19 +1,18 @@
 /*
  
- ****
- ****
- ****
- ****
+ 1
+ 12
+ 123
+ 1234
  
  
  */
-
 
 package Patterns;
 
 import java.util.Scanner;
 
-public class Pattern1 {
+public class Pattern5 {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -24,12 +23,12 @@ public class Pattern1 {
 		n = s.nextInt();
 		
 		int i = 1;
-		
 		while(i <= n) {
 			
 			int j = 1;
-			while(j <= n) {
-				System.out.print("*");
+			
+			while(j <= i) {
+				System.out.print(j);
 				j++;
 			}
 			
