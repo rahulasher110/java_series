@@ -70,7 +70,7 @@ public class Sort0or1or2 {
 			System.out.print(arr[k] + " ");
 		}
 		System.out.println("");
-		while(j<arr.length - countOne) {
+		while(j<countOne + countZero) {
 			arr[j] = 1;
 			j++;
 		}
