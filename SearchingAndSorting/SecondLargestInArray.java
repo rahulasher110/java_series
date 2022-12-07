@@ -47,41 +47,11 @@ import java.util.Scanner;
 
 public class SecondLargestInArray {
 	
-	public static int secondLargestElement(int[] arr) {
-		
-		// 6 6
-		
-		int max = Integer.MIN_VALUE;
-		
-		// bubble sort for 2 time O(n)
-		if(arr.length > 1) {
-			
-				for(int i=0; i<2; i++) {
-					
-					for(int j = i; j<arr.length-1; j++) {
-						
-						if(arr[j]>arr[j+1]) {
-							int temp = arr[j];
-							arr[j] = arr[j+1];
-							arr[j+1] = temp;
-						}
-						
-					}
-					
-					if(arr[arr.length-1] == arr[arr.length-2]) {
-						return max;
-					}
-					else {
-						max = arr[arr.length - 2];
-					}
-					
-				}
-			
-		}
-		
-		return max;
-		
-	}
+//	public static int secondLargestElement(int[] arr) {
+//		
+//		
+//		
+//	}
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -103,9 +73,9 @@ public class SecondLargestInArray {
 				arr[j] = s.nextInt();
 			}
 			
-			int res = secondLargestElement(arr);
+//			int res = secondLargestElement(arr);
 			
-			System.out.println(res);
+//			System.out.println(res);
 			
 			i++;
 		}

@@ -47,29 +47,52 @@ import java.util.Scanner;
 
 public class RotateArray {
 	
+	public static void reverse(int[] arr, int high, int low) {
+		
+		while(low<high) {
+			int temp = arr[low];
+			arr[low] = arr[high];
+			arr[high] = temp;
+			low++;
+			high--;
+		}
+		
+	}
+	
 	public static void rotate(int[] arr, int d) {
 		
-		// 1 2 3 4
-		// 2
-		// 3 4 1 2
+//		O(n^2) // brute approach
 		
-		while(d>0) {
-			int temp = arr[0];
-			int i;
-			for(i=1; i<arr.length; i++) {
+//		while(d>0) {
+//			int temp = arr[0];
+//			int i;
+//			for(i=1; i<arr.length; i++) {
+//				
+//				arr[i-1] = arr[i];
+//				
+//			}
+//			arr[i-1] = temp;
+//			d--;
+//		}
+		
+		// best approach 
+		// reverse 0 to d element and after d+1 to n element
+		// then reverse the whole array
+		
+		int low = 0;
+		int high = d-1;
 				
-				arr[i-1] = arr[i];
-				
-			}
-			arr[i-1] = temp;
-			d--;
-		}
+		reverse(arr, high, low);
 		
-		for(int i=0; i<arr.length; i++) {
-			System.out.print(arr[i] + " ");
-		}
-		System.out.println("");
+		low = d;
+		high = arr.length-1;
 		
+		reverse(arr, high, low);
+		
+		low = 0;
+		high = arr.length - 1;
+		
+		reverse(arr, high, low);
 	}
 
 	public static void main(String[] args) {
