@@ -63,37 +63,49 @@ public class TotalSumOnBoundaryAndDiagonal {
 	
 	public static void totalSum(int[][] arr) {
 		
-		int sum = 0;
+		int boundarySum = 0, diagonalSum = 0;
+		int totalSum = 0;
 		
 		for(int i=0; i<arr.length; i++) {
 			
-			for(int j=0; j<arr[i].length; j++) {
-				
-				// boundary
-				if(i == 0 || i == arr.length - 1) {
-					sum += arr[i][j];
+			if(i == 0 || i == arr.length-1) {
+				for(int j=0; j<arr[i].length; j++) {
+					
+					boundarySum += arr[i][j];
+					
 				}
-				else {
-					if(j==0 || j==arr[i].length-1) {
-						sum += arr[i][j];
+			}
+			else {
+				
+				boundarySum += arr[i][0];
+				boundarySum += arr[i][arr[i].length-1];
+				
+				for(int j=1; j<arr[i].length-1; j++) {
+					
+					if(i == j) {
+						diagonalSum += arr[i][j];
 					}
-				}
-				
-				// principal diagonal elements
-				if(i>0 && i<arr.length-1) {
-					if(i==j) {
-						sum += arr[i][j];
+					if(j == arr[i].length-1-i) {
+						diagonalSum += arr[i][j];
 					}
 					
-					// non principal diagonal elements
 				}
 				
-				
-				
+				if(arr.length % 2 != 0) {
+					if(i == arr.length / 2) {
+						diagonalSum -= arr[i][arr.length/2];
+					}
+				}
 				
 			}
 			
 		}
+		
+		
+		
+		totalSum = diagonalSum + boundarySum;
+		
+		System.out.println(totalSum);
 		
 	}
 
