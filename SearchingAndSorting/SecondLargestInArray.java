@@ -47,11 +47,47 @@ import java.util.Scanner;
 
 public class SecondLargestInArray {
 	
-//	public static int secondLargestElement(int[] arr) {
-//		
-//		
-//		
-//	}
+	public static int secondLargestElement(int[] arr) {
+		
+		int secondLargest = Integer.MIN_VALUE;
+		
+		if(arr.length <= 1) {
+			return secondLargest;
+		}
+		
+		// check whether all elements are same or not
+		int isSame = arr[0];
+		int count = 0;
+		for(int i=0; i<arr.length; i++) {
+			if(arr[i] == isSame) {
+				count++;
+			}
+		}
+		if(count == arr.length) {
+			return secondLargest;
+		}
+		
+		int firstLargest = arr[0];
+		for(int i=1; i<arr.length; i++) {
+			if(firstLargest < arr[i]) {
+				firstLargest = arr[i];
+			}
+		}
+		
+		for(int i=0; i<arr.length; i++) {
+			
+			if(arr[i] == firstLargest) {
+				continue;
+			}
+			if(arr[i] > secondLargest) {
+				secondLargest = arr[i];
+			}
+			
+		}
+		
+		return secondLargest;
+		
+	}
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -73,9 +109,9 @@ public class SecondLargestInArray {
 				arr[j] = s.nextInt();
 			}
 			
-//			int res = secondLargestElement(arr);
+			int res = secondLargestElement(arr);
 			
-//			System.out.println(res);
+			System.out.println(res);
 			
 			i++;
 		}

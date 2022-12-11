@@ -78,7 +78,7 @@ public class PrintSpiral {
 			}
 		}
 		else {
-			while(top <= bottom && left <= right) {
+			while(top < bottom && left < right) {
 				
 				for(int j=left; j<=right; j++) {
 					System.out.print(arr[top][j] + " ");		
@@ -90,16 +90,20 @@ public class PrintSpiral {
 				}
 				right--; // 2
 			
-				for(int j=right; j>=left; j--) {
-					System.out.print(arr[bottom][j] + " ");
+				if(top<bottom) {
+					for(int j=right; j>=left; j--) {
+						System.out.print(arr[bottom][j] + " ");
+					}
+					bottom--; // 2
 				}
-				bottom--; // 2
 				
 			
-				for(int j=bottom; j>=top; j--) {
-					System.out.print(arr[j][left] + " ");
+				if(left<right) {
+					for(int j=bottom; j>=top; j--) {
+						System.out.print(arr[j][left] + " ");
+					}
+					left++; //
 				}
-				left++; // 
 			
 			}
 		}
