@@ -1,0 +1,143 @@
+/*
+ 
+ You have been given a random integer array/list(ARR) and a number X. Find and return the triplet(s) in the array/list which sum to X.
+Note :
+Given array/list can contain duplicate elements.
+Input format :
+The first line contains an Integer 't' which denotes the number of test cases or queries to be run. Then the test cases follow.
+
+First line of each test case or query contains an integer 'N' representing the size of the first array/list.
+
+Second line contains 'N' single space separated integers representing the elements in the array/list.
+
+Third line contains an integer 'X'.
+Output format :
+For each test case, print the total number of triplets present in the array/list.
+
+Output for every test case will be printed in a separate line.
+Constraints :
+1 <= t <= 10^2
+0 <= N <= 10^3
+0 <= X <= 10^9
+
+Time Limit: 1 sec
+Sample Input 1:
+1
+7
+1 2 3 4 5 6 7 
+12
+Sample Output 1:
+5
+Sample Input 2:
+2
+7
+1 2 3 4 5 6 7 
+19
+9
+2 -5 8 -6 0 5 10 11 -3
+10
+Sample Output 2:
+0
+5
+
+
+ Explanation for Input 2:
+Since there doesn't exist any triplet with sum equal to 19 for the first query, we print 0.
+
+For the second query, we have 5 triplets in total that sum up to 10. They are, (2, 8, 0), (2, 11, -3), (-5, 5, 10), (8, 5, -3) and (-6, 5, 11)
+ 
+ */
+
+package TimeComplexity;
+import java.util.*;
+
+public class TripletSum {
+	
+	public static int partition(int A[], int si, int ei) {
+	        int x = A[ei];
+	        int i = (si - 1);
+	        int j;
+	 
+	        for (j = si; j <= ei - 1; j++) {
+	            if (A[j] <= x) {
+	                i++;
+	                int temp = A[i];
+	                A[i] = A[j];
+	                A[j] = temp;
+	            }
+	        }
+	        int temp = A[i + 1];
+	        A[i + 1] = A[ei];
+	        A[ei] = temp;
+	        return (i + 1);
+	}
+	
+	public static void quickSort(int A[], int si, int ei){
+	        int pi;
+	 
+	        if (si < ei) {
+	            pi = partition(A, si, ei);
+	            quickSort(A, si, pi - 1);
+	            quickSort(A, pi + 1, ei);
+	        }
+	}
+	
+	public static int tripletSum(int[] arr, int num) {
+		
+		 int l, r;
+		 quickSort(arr, 0, arr.length-1);
+		 for (int i = 0; i < arr.length - 2; i++) {
+			 
+	            // To find the other two elements, start two
+	            // index variables from two corners of the array
+	            // and move them toward each other
+	            l = i + 1; // index of the first element in the
+	                       // remaining elements
+	            r = arr.length - 1; // index of the last element
+	            while (l < r) {
+	                if (arr[i] + arr[l] + arr[r] == num) {
+	                	return arr[i] + arr[l] + arr[r];
+	                }
+	                else if (arr[i] + arr[l] + arr[r] < num)
+	                    l++;
+	 
+	                else // A[i] + A[l] + A[r] > sum
+	                    r--;
+	            }
+	        }
+		 return 0;
+		
+	}
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		Scanner s = new Scanner(System.in);
+		int t;
+		t = s.nextInt();
+		
+		int i = 1;
+		
+		while(i<=t) {
+			
+			int n;
+			n = s.nextInt();
+			
+			int arr[] = new int[n];
+			
+			for(int j=0; j<n; j++) {
+				arr[j] = s.nextInt();
+			}
+			
+			int num;
+			num = s.nextInt();
+			
+			int res = tripletSum(arr, num);
+			System.out.println(res);
+			
+			i++;
+		}
+
+	}
+
+}
