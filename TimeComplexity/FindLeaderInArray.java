@@ -39,17 +39,16 @@ public class FindLeaderInArray {
 		}
 		else {
 			int len = arr.length -1;
-			for (int i = 0; i < len; i++)
-		    {
-		        int j;
-		        for (j = i+1; j < len; j++)
-		        {
-		            if (arr[i] <arr[j])
-		                break;
-		        }   
-		        if (j == len) // the loop didn't break
-		            System.out.println(arr[i] + " ");
-		  }
+			System.out.print(arr[len] + " ");
+			int leaderElement = arr[len];
+			for(int i = len-1; i>=0; i--) {
+				
+				if(arr[i] >= leaderElement) {
+					leaderElement = arr[i];
+					System.out.print(leaderElement + " ");
+				}
+				
+			}
 		}
 		
 	}
